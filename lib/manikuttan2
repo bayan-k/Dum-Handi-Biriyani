@@ -1,0 +1,149 @@
+import 'package:dum/constants/routes.dart';
+import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+
+class MenuPage extends StatefulWidget {
+  const MenuPage({super.key});
+
+  @override
+  State<MenuPage> createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
+  bool isTapped = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 90,
+        backgroundColor: const Color(0xffC2272D),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, homeRoute);
+            },
+            icon: const Icon(Icons.arrow_back)),
+      ),
+      backgroundColor: const Color.fromARGB(255, 249, 245, 245),
+      body: 
+      CustomScrollView()
+      
+      
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Image.network(
+                    'https://i.ibb.co/TcM9C9Y/delivery.png',
+                    height: 30,
+                  
+                  ),
+                  const SizedBox(
+                    width: 15
+                  ),
+                  const Text(
+                    'Delivery',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    width: 43,
+                  ),
+                  Container(
+                     height: 38,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color.fromARGB(255, 193, 202, 193),
+                    ),
+              
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 13),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            'https://i.ibb.co/fp3QzjP/circle-1.png" alt="circle-1',
+                            height: 30,
+                            width: 30,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FlutterSwitch(
+                            value: isTapped,
+                            onToggle: (value) {
+                              setState(() {
+                                isTapped = value;
+                              });
+                            },
+                            activeColor: Colors.green,
+                            inactiveColor:const Color.fromARGB(139, 219, 213, 213), 
+                            width: 50.0, // Custom width
+                            height: 28.0, // Custom height
+                            toggleSize: 25.0, // Size of the toggle
+                            borderRadius: 30.0, // Rounded corners
+                            padding: 4.0, // Padding inside the switch
+                      
+                            // Padding inside the switch
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 38,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color.fromARGB(255, 193, 202, 193),
+                      
+                      
+                    ),
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 13),
+                      
+                      child: Row(
+                        children: [
+                          Image.network(
+                            'https://i.ibb.co/hs2W7Jb/circle.png',
+                            height: 30,
+                            width: 30,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FlutterSwitch(
+                            value: !isTapped,
+                            onToggle: (value) {
+                              setState(() {
+                                isTapped = value;
+                              });
+                            },
+                            activeColor:  Colors.red,
+                            inactiveColor: const Color.fromARGB(255, 219, 213, 213),
+                            width: 50.0, // Custom width
+                            height: 28.0, // Custom height
+                            toggleSize: 25.0, // Size of the toggle
+                            borderRadius: 30.0, // Rounded corners
+                            padding: 4.0, // Padding inside the switch
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
